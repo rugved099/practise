@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Business Name</title>
+    <link rel="stylesheet" href="site.css">
+    
+</head>
+<body>
+    <div id="app">
+        <!-- The tabs will switch pages without full reload -->
+        <header>
+            <div class="container">
+                <nav>
+                    <a href="#" class="logo" onclick="showPage('home')">Your Brand</a>
+                    <div class="hamburger" onclick="toggleMenu()">☰</div>
+                    <ul class="nav-links" id="navLinks">
+                        <li><a href="#" onclick="showPage('home')" class="active">Home</a></li>
+                        <li><a href="#" onclick="showPage('inquiry')">Inquiry</a></li>
+                        <li><a href="#" onclick="showPage('payment')">Payment</a></li>
+                        <li><a href="#" onclick="showPage('social')">Connect</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        
+        <main>
+            <!-- Home Page -->
+            <section id="home" class="page">
+                <div class="container">
+                    <div class="hero">
+                        <div class="hero-content">
+                            <h1>Welcome to Your Brand</h1>
+                            <p>We provide exceptional products and services that help our customers thrive. Discover how we can transform your experience today.</p>
+                            <a href="#" class="btn" onclick="showPage('inquiry')">Get Started</a>
+                            <a href="#" class="btn btn-secondary" onclick="showPage('payment')">Shop Now</a>
+                        </div>
+                    </div>
+                    
+                    <div class="features">
+                        <div class="feature">
+                            <div>★</div>
+                            <h3>Premium Quality</h3>
+                            <p>Our products are crafted with the finest materials and attention to detail, ensuring you receive only the best.</p>
+                        </div>
+                        <div class="feature">
+                            <div>✓</div>
+                            <h3>Expert Service</h3>
+                            <p>Our team of professionals is dedicated to providing you with personalized and attentive service.</p>
+                        </div>
+                        <div class="feature">
+                            <div>♥</div>
+                            <h3>Customer Satisfaction</h3>
+                            <p>Your happiness is our priority. We strive to exceed your expectations with every interaction.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonials">
+                        <h2>What Our Customers Say</h2>
+                        <div class="testimonial-grid">
+                            <div class="testimonial">
+                                <p>"The quality of service I received was exceptional. I wouldn't hesitate to recommend Your Brand to anyone looking for excellence."</p>
+                                <div class="client">
+                                    <img src="/api/placeholder/50/50" alt="Client">
+                                    <div>
+                                        <h4>Jane Doe</h4>
+                                        <small>Loyal Customer</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial">
+                                <p>"I was blown away by the attention to detail and the personalized approach. Your Brand truly understands customer service."</p>
+                                <div class="client">
+                                    <img src="/api/placeholder/50/50" alt="Client">
+                                    <div>
+                                        <h4>John Smith</h4>
+                                        <small>Business Owner</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Inquiry Page -->
+            <section id="inquiry" class="page container" style="display:none">
+                
+                <h1>Contact Us</h1>
+                <p>Have questions or need more information? Fill out the form below and we'll get back to you as soon as possible.</p>
+                
+                <div class="inquiry-form">
+                    <form action="https://formspree.io/f/maneqbzp"method="POST">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject" name="subject">
+                                <option value="general">General Inquiry</option>
+                                <option value="support">Customer Support</option>
+                                <option value="quote">Request a Quote</option>
+                                <option value="feedback">Feedback</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Submit Inquiry</button>
+                    </form>
+                </form>
+                </div>
+
+            </section>
+            
+            <!-- Payment Page -->
+            <section id="payment" class="page container" style="display:none">
+                <h1>Secure Payment</h1>
+                <p>Complete your purchase securely using your preferred payment method.</p>
+                
+                <div class="payment-options">
+                    <div class="payment-option" onclick="selectPayment('credit')">
+                        <div>💳</div>
+                        <h3>Credit Card</h3>
+                    </div>
+                    <div class="payment-option" onclick="selectPayment('paypal')">
+                        <div>P</div>
+                        <h3>PayPal</h3>
+                    </div>
+                    <div class="payment-option" onclick="selectPayment('bank')">
+                        <div>🏦</div>
+                        <h3>Bank Transfer</h3>
+                    </div>
+                    <div class="payment-option" onclick="selectPayment('crypto')">
+                        <div>₿</div>
+                        <h3>Cryptocurrency</h3>
+                    </div>
+                </div>
+                
+                <div class="card-form" id="creditCardForm">
+                    <h2>Credit Card Details</h2>
+                    <form id="paymentForm">
+                        <div class="form-group">
+                            <label for="cardName">Name on Card</label>
+                            <input type="text" id="cardName" name="cardName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cardNumber">Card Number</label>
+                            <input type="text" id="cardNumber" name="cardNumber" placeholder="XXXX XXXX XXXX XXXX" required>
+                        </div>
+                        <div class="card-row">
+                            <div class="form-group">
+                                <label for="expiry">Expiry Date</label>
+                                <input type="text" id="expiry" name="expiry" placeholder="MM/YY" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">CVV</label>
+                                <input type="text" id="cvv" name="cvv" placeholder="XXX" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="amount">Amount ($)</label>
+                            <input type="number" id="amount" name="amount" value="99.99" required>
+                        </div>
+                        <button type="submit" class="btn">Complete Payment</button>
+                    </form>
+                </div>
+            </section>
+            
+            <!-- Social Media Page -->
+            <section id="social" class="page container" style="display:none">
+                <h1>Connect With Us</h1>
+                <p>Stay updated with our latest news, promotions, and behind-the-scenes content on social media.</p>
+                
+                <div class="social-container">
+                    <div class="social-card">
+                        <div class="social-header">
+                            <h3>Instagram</h3>
+                            <p>@yourbrand</p>
+                        </div>
+                        <div class="social-body">
+                            <p>Follow us for daily inspiration and product showcases.</p>
+                            <div class="feed">
+                                <div class="post">
+                                    <img src="/api/placeholder/300/200" alt="Instagram Post" style="width:100%">
+                                    <p>Introducing our newest collection! #NewArrivals #YourBrand</p>
+                                    <div class="post-date">2 days ago</div>
+                                </div>
+                                <div class="post">
+                                    <img src="/api/placeholder/300/200" alt="Instagram Post" style="width:100%">
+                                    <p>Behind the scenes at our workshop. #CraftedWithLove</p>
+                                    <div class="post-date">5 days ago</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="social-card">
+                        <div class="social-header">
+                            <h3>Twitter</h3>
+                            <p>@yourbrand</p>
+                        </div>
+                        <div class="social-body">
+                            <p>Join the conversation and get real-time updates.</p>
+                            <div class="feed">
+                                <div class="post">
+                                    <p>We're excited to announce our upcoming summer sale! Stay tuned for exclusive discounts. #SummerSale #YourBrand</p>
+                                    <div class="post-date">1 day ago</div>
+                                </div>
+                                <div class="post">
+                                    <p>Customer spotlight: Check out how @JaneDoe transformed her space with our products! #CustomerLove</p>
+                                    <div class="post-date">3 days ago</div>
+                                </div>
+                                <div class="post">
+                                    <p>Responding to your FAQs in our latest blog post - link in bio! #CustomerService</p>
+                                    <div class="post-date">1 week ago</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="social-card">
+                        <div class="social-header">
+                            <h3>Facebook</h3>
+                            <p>Your Brand</p>
+                        </div>
+                        <div class="social-body">
+                            <p>Join our community of over 10,000 satisfied customers.</p>
+                            <div class="feed">
+                                <div class="post">
+                                    <img src="/api/placeholder/300/200" alt="Facebook Post" style="width:100%">
+                                    <p>Meet our team! These are the talented individuals who make the magic happen every day.</p>
+                                    <div class="post-date">Yesterday</div>
+                                </div>
+                                <div class="post">
+                                    <p>🎉 Congratulations to the winners of our monthly giveaway! Check your inbox for details.</p>
+                                    <div class="post-date">4 days ago</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="#" class="social-link">f</a>
+                    <a href="#" class="social-link">t</a>
+                    <a href="#" class="social-link">in</a>
+                    <a href="#" class="social-link">ig</a>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <div class="container">
+                <div class="footer-container">
+                    <div class="footer-section">
+                        <h3>Your Brand</h3>
+                        <p>Quality products and exceptional service since 2015.</p>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="#" onclick="showPage('home')">Home</a></li>
+                            <li><a href="#" onclick="showPage('inquiry')">Contact Us</a></li>
+                            <li><a href="#" onclick="showPage('payment')">Shop Now</a></li>
+                            <li><a href="#" onclick="showPage('social')">Social Media</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Contact Info</h3>
+                        <ul class="footer-links">
+                            <li>123 Business Street</li>
+                            <li>City, State 12345</li>
+                            <li>Phone: (123) 456-7890</li>
+                            <li>Email: info@yourbrand.com</li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Subscribe</h3>
+                        <p>Get the latest updates and offers.</p>
+                        <form>
+                            <div class="form-group">
+                                <input type="email" placeholder="Your Email Address">
+                            </div>
+                            <button type="submit" class="btn">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <p>&copy; 2025 Your Brand. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="site.js"></script>
+</body>
+</html>
